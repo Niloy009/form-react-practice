@@ -8,12 +8,17 @@ const TextInput = (props) => {
       <input
         type={props.type}
         name={props.name}
-        className="form-control form-control-sm"
+        className={
+          props.error
+            ? "form-control form-control-sm is-invalid"
+            : "form-control form-control-sm"
+        }
         placeholder={props.placeholder}
         id={props.name}
         value={props.value}
         onChange={props.onChange}
       />
+      {props.error && <div className="invalid-feedback">{props.error}</div>}
     </div>
   );
 };
@@ -25,6 +30,7 @@ TextInput.propTypes = {
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  error: PropTypes.string,
 };
 
 TextInput.defaultProps = {

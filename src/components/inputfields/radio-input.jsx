@@ -6,7 +6,13 @@ const RadioInput = (props) => {
       <div>
         <label className="mb-0">{props.label}</label>
       </div>
-      <div className="form-check form-check-inline mb-3">
+      <div
+        className={
+          props.error
+            ? "form-check form-check-inline"
+            : "form-check form-check-inline mb-3"
+        }
+      >
         <input
           className="form-check-input"
           type="radio"
@@ -19,7 +25,13 @@ const RadioInput = (props) => {
           {props.gender1}
         </label>
       </div>
-      <div className="form-check form-check-inline mb-3">
+      <div
+        className={
+          props.error
+            ? "form-check form-check-inline"
+            : "form-check form-check-inline mb-3"
+        }
+      >
         <input
           className="form-check-input"
           type="radio"
@@ -32,7 +44,13 @@ const RadioInput = (props) => {
           {props.gender2}
         </label>
       </div>
-      <div className="form-check form-check-inline mb-3">
+      <div
+        className={
+          props.error
+            ? "form-check form-check-inline"
+            : "form-check form-check-inline mb-3"
+        }
+      >
         <input
           className="form-check-input"
           type="radio"
@@ -45,6 +63,9 @@ const RadioInput = (props) => {
           {props.gender3}
         </label>
       </div>
+      {props.error && (
+        <div className="invalid-feedback d-block mb-3">{props.error}</div>
+      )}
     </>
   );
 };

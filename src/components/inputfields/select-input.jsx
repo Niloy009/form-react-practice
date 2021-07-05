@@ -8,7 +8,11 @@ const SelectInput = (props) => {
       </label>
 
       <select
-        className="form-control form-control-sm"
+        className={
+          props.error
+            ? "form-control form-control-sm is-invalid"
+            : "form-control form-control-sm"
+        }
         name={props.name}
         value={props.value}
         onChange={props.onChange}
@@ -21,6 +25,7 @@ const SelectInput = (props) => {
         <option value="Pakistan">Pakistan</option>
         <option value="China">China</option>
       </select>
+      {props.error && <div className="invalid-feedback">{props.error}</div>}
     </div>
   );
 };
