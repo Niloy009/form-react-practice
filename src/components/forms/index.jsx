@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 // import Forms from "./forms";
 import SignupForm from "./signupform";
 
@@ -44,7 +45,7 @@ class MainForm extends React.Component {
     const { errors, isValid } = this.validate();
 
     if (isValid) {
-      console.log(this.state);
+      this.props.createUser(this.state);
       event.target.reset();
       this.setState({
         name: "",
@@ -86,7 +87,7 @@ class MainForm extends React.Component {
       errors.country = "Please select your country";
     }
 
-    return { errors, isValid: Object.keys(errors) === 0 };
+    return { errors, isValid: Object.keys(errors).length === 0 };
   };
 
   render() {
@@ -113,4 +114,7 @@ class MainForm extends React.Component {
   }
 }
 
+MainForm.propTypes = {
+  createUser: PropTypes.func.isRequired,
+};
 export default MainForm;
